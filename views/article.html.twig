@@ -1,0 +1,23 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}{{ article.getTitle() }}{% endblock %}
+
+{% block content %}
+<p>
+    <h2>{{ article.getTitle() }}</h2>
+    <p>{{ article.getText() }}</p>
+<p>{{ article.getAnnee() }}</p>
+    {% for user in users %}
+    <p>
+        {{ user.getName()}} {{ user.getFirstname() }}
+    </p>
+    {% endfor %}
+
+    <h3>Add a comment</h3>
+    {% if app.user and is_granted('IS_AUTHENTICATED_FULLY') %}
+        Soon!
+    {% else %}
+        <a href="{{ path('login') }} ">Log in</a> to add comments.
+    {% endif %}
+</p>
+{% endblock %}
